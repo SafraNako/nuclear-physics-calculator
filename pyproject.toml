@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nukleer-fizik-hesaplayicisi"
+version = "0.1.0"
+description = "Nuclear physics calculator: radioactive decay and Bateman chains (Tc-99m generator), binding energies and Q-values from AME2020, a semi-empirical mass formula fitted to AME2020, and neutron activation, each cross-checked against an independent method or reference"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "SafraNako" }]
+dependencies = [
+    "numpy>=2.0",
+    "matplotlib>=3.7",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+]
+
+[project.scripts]
+nukleer-fizik-hesaplayicisi = "nukleer_fizik_hesaplayicisi.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+nukleer_fizik_hesaplayicisi = ["data/*.csv"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "tests"]
